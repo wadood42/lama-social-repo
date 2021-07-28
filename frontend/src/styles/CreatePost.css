@@ -1,0 +1,112 @@
+.create-post-container {
+  border: 1px solid rgb(255, 255, 255);
+  border-radius: 20px;
+  display: flex;
+  flex-direction: column;
+  list-style-type: none;
+  background: white;
+
+  margin: 20px;
+  padding: 0;
+}
+
+.post-form {
+  /* border: 1px solid red; */
+  /* border-radius: 20px; */
+  margin: 2px;
+  padding: 10px;
+}
+
+.profile-image-post-text {
+  border-bottom: 1px solid rgb(161, 161, 161);
+  display: flex;
+  padding: 10px;
+
+  margin-bottom: 10px;
+}
+
+.profile-image-post-text img {
+  width: 34px;
+  height: 34px;
+  margin-right: 10px;
+  /* border: 1px solid rgb(21, 17, 228); */
+  padding: 6px;
+}
+
+.post-text {
+  border: 1px solid rgb(146, 146, 146);
+  border-radius: 40px;
+  flex-basis: 90%;
+  padding: 6px;
+  outline: none;
+}
+
+.post-text:hover {
+  background: rgb(227, 227, 228);
+  cursor: pointer;
+}
+
+.photo-video {
+  display: flex;
+  justify-content: space-between;
+  /* border: 1px solid green; */
+  padding: 10px;
+}
+
+input[type="file"] {
+  color: transparent;
+  /* border: 1px solid red; */
+  width: 0px;
+}
+input[type="file"]::file-selector-button {
+  display: none;
+}
+
+label {
+  /* border: 1px solid green; */
+  padding: 6px;
+
+  cursor: pointer;
+  display: flex;
+  flex: 1;
+}
+
+label:hover {
+  background: rgb(243, 243, 243);
+}
+
+.feeling {
+  /* background: blue; */
+  display: flex;
+  flex: 1;
+  justify-content: center;
+}
+
+.feeling span {
+  /* border: 1px solid blue; */
+  margin-top: 8px;
+  font-size: 0.9rem;
+}
+
+.photo-video input[type="submit"] {
+  /* background: red; */
+  background: transparent;
+  border: none;
+  flex: 1;
+  color: rgb(5, 139, 5);
+  font-weight: bold;
+  letter-spacing: 2px;
+  font-size: 1rem;
+  cursor: pointer;
+}
+
+.location {
+  /* border: 1px solid red; */
+  display: flex;
+  flex: 1;
+  justify-content: center;
+}
+.location span {
+  margin-top: 8px;
+  font-size: 0.9rem;
+}

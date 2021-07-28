@@ -2,9 +2,21 @@ const express = require("express");
 const router = express.Router();
 const User = require("../models/User");
 const bcrypt = require("bcryptjs");
-
+const jwt = require("jsonwebtoken");
 // REGISTER ROUTES
 
+const generateToken = async (user) => {
+  const token = await jwt.sign(
+    {
+      id: user.id,
+      username: user.username,
+      email: user.email,
+    },
+    process.env.SECRET_KEY
+  );
+
+  return token;
+};
 router.post("/register", async (req, res) => {
   const newUser = await new User({
     username: req.body.username,
@@ -24,7 +36,8 @@ router.post("/register", async (req, res) => {
       password: hashedPassword,
     });
     const user = await newUser.save();
-    res.status(200).json(user);
+    const token = await generateToken(user);
+    res.status(200).json({ token: token, user: user });
   } catch (err) {
     res.status(500).json(err);
   }
@@ -41,6 +54,8 @@ router.post("/login", async (req, res) => {
     if (!validPassword) {
       res.status(400).json("incorrect password");
     }
+    const token = await generateToken(user);
+    res.status(200).json({ token: token, user: user });
   } catch (err) {
     res.status(500).json(err);
   }

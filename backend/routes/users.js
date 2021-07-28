@@ -2,7 +2,7 @@ const express = require("express");
 const bcrypt = require("bcryptjs");
 const User = require("../models/User");
 const router = express.Router();
-
+const Post = require("../models/Post");
 // UPDATE USER
 
 router.put("/:id", async (req, res) => {
@@ -30,8 +30,17 @@ router.put("/:id", async (req, res) => {
     res.status(403).json("You can only update your account");
   }
 });
-// DELETE USER
 
+// GET USER'S ALL POSTS
+router.get("/profile/:username", async (req, res) => {
+  const user = await User.findOne({ username: req.params.username });
+  const userPosts = await Post.find({ userId: user.id });
+
+  console.log("found posts user with username", userPosts);
+
+  res.status(200).json(userPosts);
+});
+// DELETE USER
 router.delete("/:id", async (req, res) => {
   if (req.body.userId === req.params.id || req.body.isAdmin) {
     try {
@@ -45,8 +54,8 @@ router.delete("/:id", async (req, res) => {
   }
 });
 // GET A USER
-
 router.get("/:id", async (req, res) => {
+  console.log("req to get a user", req);
   try {
     const user = await User.findById(req.params.id);
     const { password, updatedAt, ...other } = user._doc;
