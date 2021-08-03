@@ -5,6 +5,8 @@ const app = express();
 const userRoutes = require("./routes/users");
 const authRoutes = require("./routes/auth");
 const postRoutes = require("./routes/posts");
+const conversationRoutes = require("./routes/conversations");
+const messageRoutes = require("./routes/messages");
 const mongoose = require("mongoose");
 require("dotenv").config({ path: "./configs/.env" });
 
@@ -27,6 +29,9 @@ app.use(helmet());
 app.use(morgan("dev"));
 
 // ROUTES FOR USER
+app.use("/api/conversations", conversationRoutes);
+app.use("/api/messages", messageRoutes);
+
 app.use("/api/users", authRoutes);
 app.use("/api/users", userRoutes);
 app.use("/api/posts", postRoutes);

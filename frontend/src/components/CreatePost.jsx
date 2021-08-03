@@ -1,20 +1,29 @@
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
 import { FaPhotoVideo, FaSmileWink, FaMapMarkerAlt } from "react-icons/fa";
 import "../styles/CreatePost.css";
 import axios from "axios";
-const CreatePost = () => {
+import { AuthContext } from "../contexts/auth";
+
+const CreatePost = ({ setPosts }) => {
+  const { user } = useContext(AuthContext);
   const [postText, setPostText] = useState("");
   const [file, setFile] = useState("");
 
   const handleSubmit = async (e) => {
     e.preventDefault();
 
-    const res = await axios.post("/api/posts", {
-      desc: postText,
-      userId: "60f5fc823467c92e47dd061e",
-    });
+    try {
+      const res = await axios.post("/api/posts", {
+        desc: postText,
+        userId: user.id,
+      });
 
-    console.log("res after posting", res);
+      console.log("res after sharing post", res.data);
+      setPosts((posts) => [res.data, ...posts]);
+      setPostText("");
+    } catch (err) {
+      console.log("err after sharing post");
+    }
   };
   return (
     <div className='create-post-container'>

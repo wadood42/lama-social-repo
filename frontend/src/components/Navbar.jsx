@@ -11,12 +11,14 @@ import "../styles/Navbar.css";
 const Navbar = () => {
   const authContext = useContext(AuthContext);
 
+  console.log("rendering navbar");
+
   const { user, logout } = authContext;
   return (
     <div className='nav-container'>
       <ul className='links'>
         <li className='home-logo'>
-          <Link to='/feed'>
+          <Link to='/'>
             <h1>AfghanBook</h1>
           </Link>
         </li>
@@ -25,7 +27,7 @@ const Navbar = () => {
           <input type='search' placeholder='Search...' />
         </li>
         <li className='homepage'>
-          <Link to='/feed'>Homepage</Link>
+          <Link to='/'>Homepage</Link>
         </li>
 
         <li className='timeline'>
@@ -39,7 +41,7 @@ const Navbar = () => {
             </Link>
           </li>
           <li className='messages'>
-            <Link>
+            <Link to='/messenger'>
               <BsFillChatQuoteFill size={22} />
             </Link>
           </li>

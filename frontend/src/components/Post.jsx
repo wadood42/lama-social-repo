@@ -1,30 +1,92 @@
-import React from "react";
+import React, { useContext, useState, useEffect } from "react";
 import "../styles/Post.css";
-import { FaRegThumbsUp, FaRegHeart } from "react-icons/fa";
+import {
+  FaRegThumbsUp,
+  FaRegHeart,
+  FaThumbsDown,
+  FaTrash,
+} from "react-icons/fa";
 import { useFetch } from "../custom_hooks/useFetch";
-const Post = ({ post }) => {
-  // url to get a single user
-  // let url = `api/users/${post.userId}`;
+import axios from "axios";
+import { AuthContext } from "../contexts/auth";
+const Post = ({ post, setPosts }) => {
+  const [postUser, setPostUser] = useState(null);
 
-  // const { loading, error, data } = useFetch(url);
+  useEffect(() => {
+    const getPostUser = async () => {
+      try {
+        const res = await axios.get(`/api/users/${post.userId}`);
+        console.log("res gettiing post user", res);
+        setPostUser(res.data);
+      } catch (err) {
+        console.log("err gettting a user", err);
+      }
+    };
+
+    getPostUser();
+  }, [post]);
+  const { user } = useContext(AuthContext);
+
+  const [likesCount, setLikesCount] = useState(post.likes.length);
+  const [isLiked, setIsLiked] = useState(post.likes.includes(user.id));
+
+  const likePost = async () => {
+    try {
+      const res = axios.put(`/api/posts/${post._id}/like`, {
+        userId: user.id,
+      });
+      if (isLiked) {
+        setLikesCount((likesCount) => likesCount - 1);
+        setIsLiked(false);
+      } else {
+        setLikesCount((likesCount) => likesCount + 1);
+        setIsLiked(true);
+      }
+    } catch (err) {
+      console.log("err form liking", err);
+    }
+  };
+
+  const deletePost = async () => {
+    try {
+      const res = await axios.delete(`/api/posts/${post._id}`, {
+        data: { userId: user.id },
+      });
+
+      console.log("deleting", res.data._id);
+      setPosts((posts) => posts.filter((p) => p._id !== res.data._id));
+    } catch (err) {
+      console.log("error deleteing post", err);
+    }
+  };
 
   return (
     <div className='single-post-container'>
       <li key={post.id} className='single-post'>
         <div className='user-details'>
           <img src='/images/avatar.jpeg' alt='' />
-          {/* <h4>{post.user.username}</h4> */}
+          <h4>{postUser?.user.username}</h4>
         </div>
         <div className='post-body'>
           <p>{post.desc}</p>
         </div>
         <div className='post-btns'>
-          <span className='like-btn'>
-            <FaRegThumbsUp />
-          </span>
-          <span className='heart-btn'>
-            <FaRegHeart />
-          </span>
+          {isLiked ? (
+            <span className='like-btn' onClick={likePost}>
+              <FaThumbsDown />
+            </span>
+          ) : (
+            <span className='like-btn' onClick={likePost}>
+              <FaRegThumbsUp />
+            </span>
+          )}
+          <p className='like-counts'>{likesCount} people liked</p>
+
+          {post.userId === user.id && (
+            <span className='delete-btn' onClick={deletePost}>
+              <FaTrash size={18} />
+            </span>
+          )}
         </div>
       </li>
     </div>

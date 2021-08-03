@@ -6,9 +6,15 @@ import Rightbar from "./Rightbar";
 import Login from "./Login";
 import Signup from "./Signup";
 import Profile from "./Profile";
-import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
+import Videos from "./Videos";
+import {
+  BrowserRouter as Router,
+  Route,
+  Switch,
+  Redirect,
+} from "react-router-dom";
 import { AuthContext } from "../contexts/auth";
-import { Redirect } from "react-router-dom";
+
 const Home = () => {
   const { user } = useContext(AuthContext);
 
@@ -16,11 +22,14 @@ const Home = () => {
     return <Redirect to='/login' />;
   }
   return (
-    <>
+    <Router>
       <Navbar />
       <div className='home-container'>
         <Sidebar />
-        <Feed />
+        <Switch>
+          <Route exact path='/' component={Feed} />
+          <Route path={`/videos`} component={Videos} />
+        </Switch>
         <Rightbar />
       </div>
 
@@ -29,7 +38,7 @@ const Home = () => {
         <Route path='/register' component={Signup} />
         <Route path='/profile/:username' component={Profile} />
       </Switch> */}
-    </>
+    </Router>
   );
 };
 

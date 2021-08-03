@@ -1,5 +1,5 @@
 .home-container {
-  border: 1px solid red;
+  /* border: 1px solid red; */
 
   display: flex;
 }
@@ -57,4 +57,9 @@
   border: none;
   margin: 0%;
   margin-left: 20px;
+}
+
+.loading-spinner {
+  /* border: 1px solid red; */
+  padding: 300px;
 }

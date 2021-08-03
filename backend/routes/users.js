@@ -59,7 +59,7 @@ router.get("/:id", async (req, res) => {
   try {
     const user = await User.findById(req.params.id);
     const { password, updatedAt, ...other } = user._doc;
-    res.status(200).json({ msg: "found user", user: other });
+    res.status(200).json({ user: other });
   } catch (err) {
     res.status(400).json("no user found");
   }

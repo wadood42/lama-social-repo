@@ -8,15 +8,19 @@ import {
   MdQuestionAnswer,
   MdEvent,
 } from "react-icons/md";
-const Sidebar = () => {
+import { Link } from "react-router-dom";
+const Sidebar = ({ match }) => {
+  console.log("rendering sidebar");
   return (
     <div className='sidebar'>
       <div className='sidebar-wrapper'>
         <ul className='sidebar-list'>
-          <li className='sidebar-item'>
-            <MdRssFeed size={22} />
-            <span>Feed</span>
-          </li>
+          <Link to='/'>
+            <li className='sidebar-item'>
+              <MdRssFeed size={22} />
+              <span>Feed</span>
+            </li>
+          </Link>
 
           <li className='sidebar-item'>
             <MdChat size={22} />
@@ -24,8 +28,10 @@ const Sidebar = () => {
           </li>
 
           <li className='sidebar-item'>
-            <MdVideoLibrary size={22} />
-            <span>Video</span>
+            <Link to={`/videos`}>
+              <MdVideoLibrary size={22} />
+              <span>Video</span>
+            </Link>
           </li>
 
           <li className='sidebar-item'>

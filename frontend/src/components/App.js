@@ -7,6 +7,7 @@ import Profile from "./Profile";
 import Home from "./Home";
 import Login from "./Login";
 import Signup from "./Signup";
+import Messenger from "./Messenger";
 import { AuthContext } from "../contexts/auth";
 function App() {
   const authContext = useContext(AuthContext);
@@ -14,13 +15,21 @@ function App() {
   return (
     <div className='app'>
       <Router>
-        <Route exact path='/'>
-          {user ? <Home /> : <Login />}
-        </Route>
-        <Route path='/login'>{user ? <Redirect to='/' /> : <Login />}</Route>
+        <Route
+          exact
+          path='/'
+          render={(props) =>
+            user ? <Home {...props} /> : <Login {...props} />
+          }
+        />
+
         <Route path='/register'>
           {user ? <Redirect to='/' /> : <Signup />}
         </Route>
+
+        <Route path='/messenger'>{user ? <Messenger /> : <Login />}</Route>
+        <Route path='/login'>{user ? <Redirect to='/' /> : <Login />}</Route>
+
         <Route path='/profile/:username' component={Profile} />
       </Router>
     </div>

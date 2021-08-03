@@ -31,7 +31,7 @@ const Signup = () => {
     <div className='login-container'>
       <div className='login-wrapper'>
         <div className='login-left'>
-          <h3 className='login-logo'>Lamasocial</h3>
+          <h3 className='login-logo'>AfghanBook</h3>
           <span className='login-desc'>
             Connect with friends and the world around you on Lamasocial
           </span>
