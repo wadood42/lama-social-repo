@@ -10,6 +10,8 @@ const messageRoutes = require("./routes/messages");
 const mongoose = require("mongoose");
 require("dotenv").config({ path: "./configs/.env" });
 
+const PORT = process.env.PORT || "8080";
+
 mongoose
   .connect(process.env.MONGO_DB_URI, {
     useNewUrlParser: true,
@@ -17,8 +19,8 @@ mongoose
   })
   .then(() => {
     console.log("Connected to MongoDB");
-    app.listen(process.env.PORT, () => {
-      console.log("Listening for requests on port", process.env.PORT);
+    app.listen(PORT, () => {
+      console.log("Listening for requests on port", PORT);
     });
   })
   .catch((err) => console.log("error connecting to MongoDB", err));
