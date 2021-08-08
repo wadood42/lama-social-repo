@@ -29,6 +29,7 @@ const Home = () => {
         <Switch>
           <Route exact path='/' component={Feed} />
           <Route path={`/videos`} component={Videos} />
+          <Route path='/profile/:username' component={Profile} />
         </Switch>
         <Rightbar />
       </div>

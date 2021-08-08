@@ -75,3 +75,41 @@
   /* border: 1px solid green; */
   /* padding-left: 20px; */
 }
+
+.found-users {
+  border: 1px solid rgb(219, 217, 217);
+  border-top: 1px solid blue;
+
+  width: 300px;
+
+  background: white;
+
+  border-radius: 6px;
+  position: absolute;
+  margin-left: auto;
+  margin-right: auto;
+  left: 0;
+  right: 0;
+}
+
+.found-users ul {
+  list-style-type: none;
+  padding: 2px;
+}
+
+.found-users a {
+  color: black;
+  cursor: pointer;
+  text-decoration: none;
+}
+
+.found-users li:hover {
+  background: rgb(212, 212, 212);
+  border-radius: 4px;
+}
+.found-users li {
+  /* border: 1px solid green; */
+  padding: 6px;
+  color: black;
+  margin: 4px;
+}

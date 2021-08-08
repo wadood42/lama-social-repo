@@ -4,21 +4,31 @@
   display: flex;
 }
 
+.home-container a {
+  text-decoration: none;
+  color: black;
+}
 .sidebar {
-  border: 1px solid green;
+  /* border: 1px solid green; */
   flex: 3;
   height: calc(100vh - 50px);
 }
 
 .feed {
   flex: 4;
-  border: 1px solid green;
+  /* border: 1px solid green; */
   /* background: red; */
 }
 
 .rightbar {
   flex: 3;
-  border: 1px solid green;
+  /* border: 1px solid green; */
+}
+
+/* // PROFILE PAGE STYLES */
+.profile-container {
+  flex: 6;
+  border: 1px solid rgb(206, 206, 206);
 }
 
 /* SIDEBAR STYLES  */
@@ -60,6 +70,6 @@
 }
 
 .loading-spinner {
-  /* border: 1px solid red; */
-  padding: 300px;
+  border: 1px solid red;
+  /* padding: 300px; */
 }

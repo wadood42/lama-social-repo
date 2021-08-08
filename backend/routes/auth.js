@@ -11,6 +11,8 @@ const generateToken = async (user) => {
       id: user.id,
       username: user.username,
       email: user.email,
+      followings: user.followings,
+      followers: user.followers,
     },
     process.env.SECRET_KEY
   );

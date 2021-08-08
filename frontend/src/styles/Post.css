@@ -80,3 +80,9 @@
   color: red;
   cursor: pointer;
 }
+
+.post-time {
+  /* border: 1px solid red; */
+  display: block;
+  padding: 4px;
+}

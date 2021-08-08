@@ -30,7 +30,7 @@ function App() {
         <Route path='/messenger'>{user ? <Messenger /> : <Login />}</Route>
         <Route path='/login'>{user ? <Redirect to='/' /> : <Login />}</Route>
 
-        <Route path='/profile/:username' component={Profile} />
+        {/* <Route path='/profile/:username' component={Profile} /> */}
       </Router>
     </div>
   );

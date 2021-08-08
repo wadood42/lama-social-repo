@@ -6,6 +6,8 @@ import {
   FaThumbsDown,
   FaTrash,
 } from "react-icons/fa";
+import { format } from "timeago.js";
+import { Link } from "react-router-dom";
 import { useFetch } from "../custom_hooks/useFetch";
 import axios from "axios";
 import { AuthContext } from "../contexts/auth";
@@ -65,7 +67,9 @@ const Post = ({ post, setPosts }) => {
       <li key={post.id} className='single-post'>
         <div className='user-details'>
           <img src='/images/avatar.jpeg' alt='' />
-          <h4>{postUser?.user.username}</h4>
+          <Link to={`/profile/${postUser?.user.username}`}>
+            <h4>{postUser?.user.username}</h4>
+          </Link>
         </div>
         <div className='post-body'>
           <p>{post.desc}</p>
@@ -87,6 +91,7 @@ const Post = ({ post, setPosts }) => {
               <FaTrash size={18} />
             </span>
           )}
+          <p className='post-time'>{format(post.createdAt)}</p>
         </div>
       </li>
     </div>

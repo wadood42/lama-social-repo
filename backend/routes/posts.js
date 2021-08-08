@@ -79,7 +79,7 @@ router.get("/:id", async (req, res) => {
 // GET TIMELINE POSTS
 
 router.get("/timeline/:userId", async (req, res) => {
-  console.log("hola boal");
+  // console.log("hola boal");
   try {
     const currentUser = await User.findById(req.params.userId);
     console.log("current user", currentUser);

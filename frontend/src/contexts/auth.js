@@ -20,6 +20,26 @@ const authReducer = (state, action) => {
     case "LOGOUT": {
       return { ...state, user: null };
     }
+    case "FOLLOW": {
+      return {
+        ...state,
+        user: {
+          ...state.user,
+          followings: [...state.user.followings, action.payload],
+        },
+      };
+    }
+    case "UNFOLLOW": {
+      return {
+        ...state,
+        user: {
+          ...state.user,
+          followings: state.user.followings.filter(
+            (following) => following !== action.payload
+          ),
+        },
+      };
+    }
     default:
       return state;
   }
@@ -42,9 +62,23 @@ const AuthProvider = (props) => {
       type: "LOGOUT",
     });
   };
+
+  const follow = (userData) => {
+    dispatch({
+      type: "FOLLOW",
+      payload: userData,
+    });
+  };
+
+  const unfollow = (userData) => {
+    dispatch({
+      type: "UNFOLLOW",
+      payload: userData,
+    });
+  };
   return (
     <AuthContext.Provider
-      value={{ user: state.user, login, logout }}
+      value={{ user: state.user, login, logout, follow, unfollow }}
       {...props}
     />
   );
