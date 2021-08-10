@@ -10,7 +10,7 @@ const messageRoutes = require("./routes/messages");
 const mongoose = require("mongoose");
 require("dotenv").config({ path: "./configs/.env" });
 
-const PORT = process.env.PORT || "8080";
+const PORT = process.env.PORT || 8080;
 
 mongoose
   .connect(process.env.MONGO_DB_URI, {
@@ -37,3 +37,7 @@ app.use("/api/messages", messageRoutes);
 app.use("/api/users", authRoutes);
 app.use("/api/users", userRoutes);
 app.use("/api/posts", postRoutes);
+
+if (process.env.NODE_ENV === "production") {
+  app.use(express.static("frontend/build"));
+}
