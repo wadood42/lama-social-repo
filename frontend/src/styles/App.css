@@ -1,0 +1,15 @@
+:root {
+  --main-bg-color: rgb(241, 225, 225);
+}
+
+body {
+  font-family: system-ui, -apple-system, ".SFNSText-Regular", sans-serif;
+  overflow-y: scroll;
+  font-size: 12px;
+  direction: ltr;
+  background: "#29487d";
+
+  line-height: 1.34;
+}
+
+

@@ -1,0 +1,88 @@
+* {
+  box-sizing: border-box;
+}
+
+.single-post-container {
+  border: 1px solid rgb(255, 255, 255);
+  border-radius: 20px;
+  display: flex;
+  flex-direction: column;
+  list-style-type: none;
+  background: white;
+
+  margin: 20px;
+  padding: 0;
+}
+
+.single-post {
+  margin: 20px;
+  /* border: 1px solid black; */
+  /* background: white; */
+}
+
+.user-details {
+  /* border: 1px solid blue; */
+  display: flex;
+  margin-bottom: 10px;
+}
+
+.user-details img {
+  /* border: 1px solid rgb(0, 255, 21); */
+  width: 30px;
+  height: 30px;
+  border-radius: 50px;
+}
+.user-details h4 {
+  /* border: 1px solid green; */
+  text-align: center;
+  font-weight: bold;
+  padding: 8px;
+}
+.post-body {
+  /* border: 1px solid red; */
+  margin-bottom: 10px;
+}
+
+.post-btns {
+  /* border: 1px solid red; */
+  padding: 6px;
+  display: flex;
+}
+
+.like-btn {
+  background: rgb(81, 79, 223);
+  border: 1px solid blue;
+  border-radius: 50%;
+  color: white;
+
+  cursor: pointer;
+  width: 30px;
+  height: 30px;
+  text-align: center;
+}
+
+.like-btn svg {
+  color: rgb(247, 244, 244);
+  /* border: 1px solid red; */
+  margin-top: 6px;
+}
+
+.like-counts {
+  /* border: 1px solid green; */
+  text-align: center;
+  padding: 4px;
+}
+
+.delete-btn {
+  /* border: 1px solid red; */
+  border-radius: 50px;
+  padding: 6px;
+  color: red;
+  cursor: pointer;
+}
+
+.post-time {
+  /* border: 1px solid red; */
+  display: block;
+  padding: 4px;
+}

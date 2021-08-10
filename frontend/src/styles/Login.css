@@ -1,0 +1,129 @@
+.login-container {
+  width: 100vw;
+  height: 100vh;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  background-color: var(--main-bg-color);
+
+  /* border: 1px solid red; */
+}
+
+@media only screen and (max-width: 800px) {
+  .login-container {
+    flex-direction: row;
+  }
+}
+
+.login-wrapper {
+  width: 70%;
+  height: 70%;
+
+  /* border: 1px solid red; */
+
+  display: flex;
+}
+
+@media only screen and (max-width: 900px) {
+  .login-wrapper {
+    /* background: red; */
+    flex-direction: column;
+    border: 1px solid red;
+  }
+
+  .forn-link {
+    background: red !important;
+  }
+
+  .login-desc {
+    border: 1px solid red;
+    text-align: center;
+  }
+}
+
+.login-left,
+.login-right {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+
+  /* border: 1px solid red; */
+}
+
+.login-logo {
+  font-weight: bolder;
+  font-size: 4rem;
+  color: #1775ee;
+  margin-bottom: 10px;
+}
+
+.login-desc {
+  font-size: 1.5rem;
+}
+
+.form-container {
+  height: 300px;
+  width: 100%;
+
+  padding: 20px;
+  background: white;
+  border-radius: 10px;
+
+  /* border: 1px solid blue; */
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.form-container input {
+  height: 50px;
+  border-radius: 10px;
+  border: 1px solid grey;
+  font-size: 18px;
+  padding-left: 20px;
+}
+
+@media only screen and (max-width: 550px) {
+  .form-link {
+    padding: 6px !important;
+  }
+}
+
+.form-container input:focus {
+  outline: none;
+}
+
+.form-container input[type="submit"] {
+  background: #1775ee;
+  color: white;
+  cursor: pointer;
+}
+
+.forgot-password {
+  text-align: center;
+}
+
+.form-link {
+  width: 50%;
+  padding: 16px;
+  text-align: center;
+  border-radius: 10px;
+  border: none;
+  background: #42b72a;
+  font-weight: bolder;
+  font-size: 1rem;
+  cursor: pointer;
+  color: white;
+  text-decoration: none;
+  margin: 0 auto;
+}
+
+/* SIGNUP STYLES  */
+
+.signup {
+  height: 350px;
+}
