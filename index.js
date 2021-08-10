@@ -31,6 +31,10 @@ app.use(helmet());
 app.use(morgan("dev"));
 
 // ROUTES FOR USER
+
+app.use("/", (req, res) => {
+  res.send("Welcome");
+});
 app.use("/api/conversations", conversationRoutes);
 app.use("/api/messages", messageRoutes);
 
